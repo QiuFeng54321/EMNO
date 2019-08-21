@@ -6,8 +6,9 @@
 #ifndef EMNO_GLOBAL_HPP
 #define EMNO_GLOBAL_HPP
 
+#include <vector>
+#include <fstream>
 
 typedef unsigned char byte;
-
 
 #endif //EMNO_GLOBAL_HPP
