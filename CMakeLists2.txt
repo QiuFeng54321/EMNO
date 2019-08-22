@@ -3,12 +3,13 @@ project(EMNO)
 
 set(CMAKE_CXX_STANDARD 17)
 
-include(CMake/FindZstd.cmake)
+find_package(zlib REQUIRED)
 
-if (ZSTD_FOUND)
-    message("Zstd library: ${ZSTD_LIBRARY}")
-    message("Zstd include directory: ${ZSTD_INCLUDE_DIR}")
-    include_directories(${ZSTD_INCLUDE_DIR})
+if (ZLIB_FOUND)
+    message("Zlib found: version ${ZLIB_VERSION_STRING}")
+    message("Zlib library: ${ZLIB_LIBRARIES}")
+    message("Zlib include directory: ${ZLIB_INCLUDE_DIRS}")
+    include_directories(${ZLIB_INCLUDE_DIRS})
 endif ()
 
 add_subdirectory(test)
@@ -24,4 +25,4 @@ link_directories(libs)
 
 add_library(emno SHARED ${SOURCE_FILES})
 
-target_link_libraries(emno ${ZSTD_LIBRARY})
+target_link_libraries(emno ${ZLIB_LIBRARIES})

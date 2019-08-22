@@ -1,42 +1,31 @@
 //
-// Created by Qiufeng54321 on 2019-08-20.
-// This file is licensed by GPL 3.0
+// Created by Qiufeng54321 on 2019-08-22.
+// Copyright (C) 2019  Qiufeng54321
+//
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
 #ifndef EMNO_COMPRESSION_HPP
 #define EMNO_COMPRESSION_HPP
 
-#define ZLIB_CHUNK_SIZE 16384
-
-#include <zlib.h>
 #include "Global.hpp"
+#include "common.h"
+#include "zstd.h"
 
 namespace EMNO::Compression {
-	class ZLibInputStream {
-	private:
-		void _init();
+	class ZstdInputStream {
 
-		void _finish();
-
-	protected:
-		z_stream stream;
-		std::ifstream input;
-	public:
-		ZLibInputStream(std::string in);
-
-		/**
-		 * decompress input bytes.
-		 * code from https://github.com/majestic53/libanvil/blob/master/src/compression.cpp
-		 * @param in input bytes to be decompressed
-		 * @return decompressed data
-		 */
-		std::vector<byte> readBytes(std::vector<byte> in) noexcept(false);
-
-		std::vector<byte> readBytes(int numbytes);
-
-		std::vector<byte> readAll();
-
-		void open(std::string in), close();
 	};
 }
 
